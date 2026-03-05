@@ -1,459 +1,375 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DA 5 BLOODS | Netflix</title>
-    <link href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- Anti-Adblock Detection -->
-    <script>
-        // AdBlocker detection and bypass
-        var adBlockEnabled = false;
-        var testAd = document.createElement('div');
-        testAd.innerHTML = '&nbsp;';
-        testAd.className = 'adsbox';
-        document.body.appendChild(testAd);
-        window.setTimeout(function() {
-            if (testAd.offsetHeight === 0) {
-                adBlockEnabled = true;
-                // Redirect or show anti-adblock message
-                document.body.innerHTML = '<div style="text-align:center;padding:50px;background:#000;color:#fff;"><h1>Please Disable AdBlocker</h1><p>This website relies on ads to provide free content. Please disable your ad blocker to continue.</p><button onclick="location.reload()" style="padding:10px 20px;background:#e50914;color:white;border:none;cursor:pointer;">Reload Page</button></div>';
-            }
-            testAd.remove();
-        }, 100);
-    </script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Netflix Sans', sans-serif;
-        }
-        
-        body {
-            background-color: #141414;
-            color: #fff;
-            overflow-x: hidden;
-        }
-        
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 45px;
-            position: fixed;
-            width: 100%;
-            z-index: 100;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
-        }
-        
-        .netflix-logo {
-            height: 40px;
-            fill: #e50914;
-        }
-        
-        .hero {
-            position: relative;
-            height: 100vh;
-            background: 
-                linear-gradient(to top, #141414 5%, transparent 50%),
-                linear-gradient(to bottom, #141414 0%, transparent 20%),
-                url('fivebloodsanatomy2-videoSixteenByNine3000.jpg') center/cover no-repeat;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 0 4%;
-            animation: fadeIn 1.5s ease-in-out;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>صندوق الهدايا | redpacket_box</title>
+  <!-- Font Awesome 6 (Free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Tajawal', 'Segoe UI', system-ui, sans-serif;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin-top: 100px;
-        }
-        
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-        
-        .hero-meta {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-        
-        .match-score {
-            color: #46d369;
-            font-weight: 700;
-            margin-right: 15px;
-        }
-        
-        .year {
-            margin-right: 15px;
-        }
-        
-        .maturity-rating {
-            border: 1px solid rgba(255,255,255,0.4);
-            padding: 0 5px;
-            border-radius: 2px;
-        }
-        
-        .hero-description {
-            font-size: 1.4rem;
-            line-height: 1.4;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.45);
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .play-button, .download-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            padding: 10px 25px;
-            border-radius: 4px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .play-button {
-            background-color: #fff;
-            color: #000;
-        }
-        
-        .play-button:hover {
-            background-color: rgba(255,255,255,0.8);
-        }
-        
-        .download-button {
-            background-color: rgba(109, 109, 110, 0.7);
-            color: #fff;
-        }
-        
-        .download-button:hover {
-            background-color: rgba(109, 109, 110, 0.5);
-        }
-        
-        .button-icon {
-            margin-right: 10px;
-            font-size: 1.8rem;
-        }
-        
-        .cast {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.7);
-        }
-        
-        .cast span {
-            color: #fff;
-            font-weight: 700;
-        }
-        
-        .genre {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.7);
-        }
-        
-        /* Modal Styles */
-        .locker-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        
-        .locker-content {
-            background: rgba(20,20,20,0.95);
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid #e50914;
-            max-width: 400px;
-            width: 90%;
-        }
-        
-        .locker-content h2 {
-            margin-bottom: 1rem;
-            color: #e50914;
-        }
-        
-        .download-btn {
-            display: inline-block;
-            background: #e50914;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.3s ease;
-        }
-        
-        .download-btn:hover {
-            background: #b00710;
-        }
-        
-        /* Netflix-like footer */
-        .footer {
-            padding: 50px 15% 10px;
-            background-color: #141414;
-            color: #757575;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-links {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .footer-link-item {
-            list-style: none;
-            margin-bottom: 10px;
-        }
-        
-        .footer-link-item a {
-            color: #757575;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-        
-        .footer-link-item a:hover {
-            text-decoration: underline;
-        }
-        
-        .service-code {
-            border: 1px solid #757575;
-            padding: 5px 10px;
-            font-size: 0.8rem;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-        
-        .copyright {
-            font-size: 0.8rem;
-        }
-        
-        /* Ad container styles */
-        .ad-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-            background-color: rgba(0,0,0,0.2);
-            padding: 10px 0;
-            min-height: 90px;
-        }
-        
-        .banner-ad {
-            width: 728px;
-            height: 90px;
-            margin: 0 auto;
-            background-color: rgba(0,0,0,0.3);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: rgba(255,255,255,0.5);
-        }
-        
-        .adsbox {
-            height: 1px;
-            width: 1px;
-            position: absolute;
-            left: -100px;
-        }
-        
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-description {
-                font-size: 1.1rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .footer-links {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .banner-ad {
-                width: 100%;
-                height: auto;
-                padding: 10px;
-            }
-        }
-    </style>
+    /* fallback font – Tajawal is modern and very popular in Egypt */
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap');
+
+    body {
+      background: linear-gradient(145deg, #1a1f2e 0%, #0d0f17 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      color: #ffffff;
+    }
+
+    .card {
+      background: rgba(18, 23, 40, 0.9);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 215, 0, 0.25);
+      border-radius: 48px 48px 32px 32px;
+      max-width: 420px;
+      width: 100%;
+      padding: 24px 18px 28px 18px;
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7), 0 0 0 2px rgba(240, 185, 11, 0.1) inset;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* subtle glitter / crypto vibe */
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.15), transparent 70%);
+      top: -80px;
+      right: -80px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .gift-icon {
+      font-size: 4.8rem;
+      filter: drop-shadow(0 8px 12px #f0b90b80);
+      animation: subtle-float 3s infinite ease-in-out;
+      color: #f3ba2f;
+      margin-bottom: 4px;
+    }
+
+    @keyframes subtle-float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(to left, #f9e2a1, #f3ba2f, #ffd966);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0 0 6px 0;
+      line-height: 1.2;
+      text-shadow: 0 2px 5px rgba(243, 186, 47, 0.3);
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px 16px;
+      border-radius: 60px;
+      backdrop-filter: blur(4px);
+      display: inline-block;
+      margin: 10px 0 12px 0;
+      border: 1px solid rgba(255, 215, 0, 0.25);
+      color: #ddd;
+    }
+
+    .subtitle i {
+      color: #f3ba2f;
+      margin: 0 4px;
+    }
+
+    .coin-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 80px;
+      padding: 8px 16px;
+      width: fit-content;
+      margin: 16px auto 20px auto;
+      border: 1px solid #3a3f55;
+    }
+
+    .coin-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .coin-item i {
+      font-size: 1.3rem;
+    }
+
+    .btc-color { color: #f3ba2f; }      /* BTTC / gold */
+    .usdt-color { color: #26a17b; }    /* USDT green */
+    .bnb-color { color: #f3ba2f; }      /* BNB gold */
+
+    .wheel-preview {
+      background: #0b0e14;
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      margin: 18px auto 12px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border: 4px solid rgba(243, 186, 47, 0.5);
+      box-shadow: 0 0 30px #f3ba2f40, 0 0 0 2px #ffd966 inset;
+    }
+
+    .wheel-preview i {
+      font-size: 6rem;
+      color: #ffd966;
+      filter: drop-shadow(0 0 6px gold);
+      position: absolute;
+    }
+
+    .wheel-spin-emoji {
+      font-size: 5rem;
+      z-index: 5;
+      animation: spin 12s infinite linear;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .prize-tag {
+      background: #232843;
+      padding: 12px 16px;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 24px 0 20px;
+      font-weight: 500;
+      border: 1px dashed #f3ba2f;
+    }
+
+    .prize-tag span {
+      background: #f3ba2f;
+      color: #0d0f17;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .prize-tag i {
+      color: #f3ba2f;
+      font-size: 1.4rem;
+    }
+
+    .cta-button {
+      background: linear-gradient(145deg, #f3ba2f, #f9d971);
+      border: none;
+      border-radius: 80px;
+      padding: 22px 28px;
+      width: 100%;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #0b0e14;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 0 18px 25px -8px #f3ba2f80, 0 0 0 2px #ffefb0 inset;
+      margin: 20px 0 14px 0;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: 1px solid white;
+    }
+
+    .cta-button:active {
+      transform: scale(0.97);
+      box-shadow: 0 8px 15px #f3ba2f;
+    }
+
+    .cta-button i {
+      font-size: 2rem;
+      color: #1e1a0c;
+    }
+
+    .channel-info {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 14px 16px;
+      border-radius: 50px;
+      margin: 12px 0 8px 0;
+      font-size: 1.1rem;
+      border: 1px solid #3f445b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      direction: ltr;
+    }
+
+    .channel-info i {
+      color: #f3ba2f;
+    }
+
+    .channel-info span {
+      background: #2a2f44;
+      padding: 5px 15px;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #ddd;
+    }
+
+    .trust-badge {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 20px 0 5px;
+      color: #aaa;
+      font-size: 0.85rem;
+    }
+
+    .trust-badge i {
+      color: #f3ba2f;
+      margin-left: 4px;
+    }
+
+    .footer-note {
+      color: #6a6f87;
+      font-size: 0.8rem;
+      margin-top: 18px;
+      border-top: 1px solid #2c3145;
+      padding-top: 14px;
+    }
+
+    .highlight {
+      background: #f3ba2f30;
+      border-radius: 40px;
+      padding: 2px 14px;
+      font-weight: 700;
+    }
+
+    /* arabic / egypt friendly */
+    .eg-flag {
+      display: inline-block;
+      margin-left: 6px;
+      font-size: 1.2rem;
+    }
+  </style>
 </head>
 <body>
-    <!-- Profitableratecpm Script -->
-    <script type='text/javascript' src='//pl27426524.profitableratecpm.com/18/39/f7/1839f77694456482022fad56d8596d33.js'></script>
-    
-    <nav class="navbar">
-        <svg class="netflix-logo" viewBox="0 0 111 30" focusable="false">
-            <g id="netflix-logo">
-                <path d="M105.06233,14.2806261 L110.999156,30 C109.249227,29.7497422 107.500234,29.4366857 105.718437,29.1554972 L102.374168,20.4686475 L98.9371075,28.4375293 C97.2499766,28.1563408 95.5928391,28.061674 93.9057081,27.8432843 L99.9372012,14.0931671 L94.4680851,-5.68434189e-14 L99.5313525,-5.68434189e-14 L102.593495,7.87421502 L105.874965,-5.68434189e-14 L110.999156,-5.68434189e-14 L105.06233,14.2806261 Z M90.4686475,-5.68434189e-14 L85.8749649,-5.68434189e-14 L85.8749649,27.2499766 C87.3746368,27.3437061 88.9371075,27.4055675 90.4686475,27.5930265 L90.4686475,-5.68434189e-14 Z M81.9055207,26.93692 C77.7186241,26.6557316 73.5307901,26.4064111 69.250164,26.3117443 L69.250164,-5.68434189e-14 L73.9366389,-5.68434189e-14 L73.9366389,21.8745899 C76.6248008,21.9373887 79.3120255,22.1557784 81.9055207,22.2804387 L81.9055207,26.93692 Z M64.2496954,10.6561065 L64.2496954,15.3435186 L57.8442216,15.3435186 L57.8442216,25.9996251 L53.2186709,25.9996251 L53.2186709,-5.68434189e-14 L66.3436123,-5.68434189e-14 L66.3436123,4.68741213 L57.8442216,4.68741213 L57.8442216,10.6561065 L64.2496954,10.6561065 Z M45.3435186,4.68741213 L45.3435186,26.2498828 C43.7810479,26.2498828 42.1876465,26.2498828 40.6561065,26.3117443 L40.6561065,4.68741213 L35.8121661,4.68741213 L35.8121661,-5.68434189e-14 L50.2183897,-5.68434189e-14 L50.2183897,4.68741213 L45.3435186,4.68741213 Z M30.749836,15.5928391 C28.687787,15.5928391 26.2498828,15.5928391 24.4999531,15.6875059 L24.4999531,22.6562939 C27.2499766,22.4678976 30,22.2495079 32.7809542,22.1557784 L32.7809542,26.6557316 L19.812541,27.6876933 L19.812541,-5.68434189e-14 L32.7809542,-5.68434189e-14 L32.7809542,4.68741213 L24.4999531,4.68741213 L24.4999531,10.9991564 C26.3126816,10.9991564 29.0936358,10.9054269 30.749836,10.9054269 L30.749836,15.5928391 Z M4.78114163,12.9684132 L4.78114163,29.3429562 C3.09401069,29.5313525 1.59340144,29.7497422 0,30 L0,-5.68434189e-14 L4.4690224,-5.68434189e-14 L10.562377,17.0315868 L10.562377,-5.68434189e-14 L15.2497891,-5.68434189e-14 L15.2497891,28.061674 C13.5935889,28.3437998 11.906458,28.4375293 10.1246602,28.6868498 L4.78114163,12.9684132 Z" fill="#e50914"></path>
-            </g>
-        </svg>
-    </nav>
-
-    <!-- Banner Ad 1 (728x90) -->
-    <div class="ad-container">
-        <div class="banner-ad">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '36866fc60b7fb2bdd6e57909fc34d8b2',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/36866fc60b7fb2bdd6e57909fc34d8b2/invoke.js"></script>
-        </div>
+  <div class="card">
+    <!-- floating gift box icon -->
+    <div class="gift-icon">
+      <i class="fas fa-gift"></i>
     </div>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">DA 5 BLOODS</h1>
-            <div class="hero-meta">
-                <span class="match-score">96% Match</span>
-                <span class="year">2020</span>
-                <span class="maturity-rating">R</span>
-                <span class="duration">2h 34m</span>
-            </div>
-            <p class="hero-description">
-                Four African American Vietnam veterans return to Vietnam in search of the remains of their fallen squad leader — and the promise of buried treasure. From Spike Lee, this powerful drama explores the lasting impact of war.
-            </p>
-            <div class="hero-buttons">
-                <button class="play-button">
-                    <span class="button-icon">▶</span> Play
-                </button>
-                <button class="download-button" id="downloadBtn">
-                    <span class="button-icon">↓</span> Download
-                </button>
-            </div>
-            <div class="cast">
-                <p>Starring: <span>Delroy Lindo</span>, <span>Jonathan Majors</span>, <span>Clarke Peters</span></p>
-            </div>
-            <div class="genre">
-                <p>Drama, War, Action</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Banner Ad 2 (728x90) -->
-    <div class="ad-container">
-        <div class="banner-ad">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '36866fc60b7fb2bdd6e57909fc34d8b2',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/36866fc60b7fb2bdd6e57909fc34d8b2/invoke.js"></script>
-        </div>
+    <!-- main headline with egypt vibe -->
+    <h1>
+      <span class="eg-flag">🇪🇬</span> صندوق الهدايا <span class="eg-flag">🇪🇬</span>
+    </h1>
+    <div class="subtitle">
+      <i class="fas fa-crown"></i> الليلة.. دور العجلة واكسب <i class="fas fa-crown"></i>
     </div>
 
-    <div class="footer">
-        <div class="social-links">
-            <!-- Social media icons would go here -->
-        </div>
-        <div class="footer-links">
-            <ul>
-                <li class="footer-link-item"><a href="#">Audio Description</a></li>
-                <li class="footer-link-item"><a href="#">Help Center</a></li>
-                <li class="footer-link-item"><a href="#">Gift Cards</a></li>
-                <li class="footer-link-item"><a href="#">Media Center</a></li>
-            </ul>
-            <ul>
-                <li class="footer-link-item"><a href="#">Investor Relations</a></li>
-                <li class="footer-link-item"><a href="#">Jobs</a></li>
-                <li class="footer-link-item"><a href="#">Terms of Use</a></li>
-                <li class="footer-link-item"><a href="#">Corporate Information</a></li>
-            </ul>
-            <ul>
-                <li class="footer-link-item"><a href="#">Privacy</a></li>
-                <li class="footer-link-item"><a href="#">Legal Notices</a></li>
-                <li class="footer-link-item"><a href="#">Cookie Preferences</a></li>
-                <li class="footer-link-item"><a href="#">Contact Us</a></li>
-            </ul>
-            <ul>
-                <li class="footer-link-item"><a href="#">Speed Test</a></li>
-                <li class="footer-link-item"><a href="#">Legal Guarantee</a></li>
-                <li class="footer-link-item"><a href="#">Only on Netflix</a></li>
-            </ul>
-        </div>
-        <div class="service-code">Service Code</div>
-        <div class="copyright">© 2023 Netflix, Inc.</div>
+    <!-- coin strip: bttc - usdt - bnb -->
+    <div class="coin-row">
+      <div class="coin-item"><i class="fas fa-coins btcc-color" style="color:#f3ba2f;"></i> BTTC</div>
+      <div class="coin-item"><i class="fas fa-dollar-sign usdt-color"></i> USDT</div>
+      <div class="coin-item"><i class="fab fa-btc bnb-color"></i> BNB</div>
     </div>
 
-    <!-- Modal -->
-    <div class="locker-modal" id="lockerModal">
-        <div class="locker-content">
-            <h2>Download Ready</h2>
-            <p>Click the button below to download Da 5 Bloods</p>
-            <a href="https://locked4.com/cl/i/42x3w4" target="_blank" class="download-btn">Download Now</a>
-        </div>
+    <!-- spin wheel visual (interactive feeling) -->
+    <div class="wheel-preview">
+      <i class="fas fa-circle-notch fa-spin wheel-spin-emoji" style="font-size: 7rem; color: #f9d971;"></i>
+      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #0b0e14; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid #f3ba2f;">
+        <i class="fas fa-gift" style="color: #f3ba2f; font-size: 2rem;"></i>
+      </div>
     </div>
 
-    <script>
-        const modal = document.getElementById('lockerModal');
-        const btn = document.getElementById('downloadBtn');
+    <!-- Daily chance highlight -->
+    <div class="prize-tag">
+      <i class="fas fa-calendar-alt"></i> فرصتك اليومية <span>+500%</span>
+      <i class="fas fa-arrow-left"></i>
+    </div>
 
-        btn.addEventListener('click', () => {
-            modal.style.display = 'flex';
-        });
+    <!-- main CTA – يخش البوت فوراً -->
+    <a href="https://t.me/redpacket_gift_bot/app" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+      <div class="cta-button">
+        <i class="fab fa-telegram"></i> ادخل وادير العجلة
+        <i class="fas fa-arrow-left"></i>
+      </div>
+    </a>
 
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
+    <!-- channel link + bot link clearly -->
+    <div class="channel-info">
+      <i class="fab fa-telegram-plane"></i> القناة: <span>@redpacket_box</span>
+    </div>
+    <div style="font-size: 0.95rem; background: #191e30; padding: 8px; border-radius: 40px; margin-bottom: 10px; direction: ltr; display: flex; align-items: center; justify-content: center; gap: 4px;">
+      <i class="fas fa-link" style="color:#f3ba2f;"></i> رابط البوت المباشر:
+      <span style="background:#2d334b; padding:4px 10px; border-radius: 30px; font-size:0.8rem;">redpacket_gift_bot</span>
+    </div>
 
-        // Additional anti-adblock measure
-        window.onload = function() {
-            if (adBlockEnabled) {
-                // Show anti-adblock message
-                document.body.innerHTML = '<div style="text-align:center;padding:50px;background:#000;color:#fff;"><h1>Please Disable AdBlocker</h1><p>This website relies on ads to provide free content. Please disable your ad blocker to continue.</p><button onclick="location.reload()" style="padding:10px 20px;background:#e50914;color:white;border:none;cursor:pointer;">Reload Page</button></div>';
-            }
-        };
-    </script>
+    <!-- social proof / trust badges (FOMO for egyptians) -->
+    <div class="trust-badge">
+      <span><i class="fas fa-user-check"></i> +12k user today</span>
+      <span><i class="fas fa-bolt"></i>  دفع فوري</span>
+      <span><i class="fas fa-star"></i> 4.9 ★</span>
+    </div>
+
+    <!-- extra incentive : spinning now -->
+    <div style="background: linear-gradient(90deg, transparent, #f3ba2f20, transparent); padding: 8px; border-radius: 40px; margin: 12px 0 4px; font-weight: 500;">
+      <i class="fas fa-sync-alt fa-spin"></i> ٧٢ مستخدم يدير العجلة الآن 🇪🇬
+    </div>
+
+    <!-- footer note with crypto disclaimer -->
+    <div class="footer-note">
+      <i class="fas fa-gem" style="color:#f3ba2f;"></i> كل يوم فرصة جديدة تكسب BTTC - USDT - BNB<br>
+      اضمن مكسبك دلوقتي
+    </div>
+
+    <!-- tiny micro interaction : double arrows -->
+    <div style="color: #f3ba2f; margin-top: 5px; font-size: 1rem;">
+      <i class="fas fa-angle-double-down"></i> <i class="fas fa-angle-double-down"></i>
+    </div>
+  </div>
+
+  <!-- Optional: add a simple tracker feel (non functional but looks like activity) -->
+  <script>
+    (function() {
+      // just for fun: simulate active users counter update every few seconds (but static)
+      // it's purely cosmetic for Egyptian users trust
+      console.log("صندوق الهدايا جاهز للمستخدمين المصريين 💸");
+    })();
+  </script>
 </body>
 </html>
